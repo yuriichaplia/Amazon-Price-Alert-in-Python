@@ -23,12 +23,11 @@ response = requests.get(AMAZON_URL, headers=headers)
 content = response.text
 
 soup = BeautifulSoup(content, "html.parser")
-print(soup.prettify())
 
 try:
     price: float = float(
         soup.find(name="span", class_="a-price-whole").get_text().replace(",", "")
-        + soup.find(name="span", class_="a-price-fraction").get_text())
+        + "." + soup.find(name="span", class_="a-price-fraction").get_text())
 except AttributeError:
     price: float = float(soup.find(name="span", class_="a-price-whole").get_text().replace(",", ""))
 
@@ -48,11 +47,11 @@ msg['From'] = MY_EMAIL
 msg['To'] = TO_EMAIL
 msg['Subject'] = "Amazon Price Alert!"
 
-body: str = f"{product_title}is now ¥{price} with the delivery price ¥{delivery}\n{AMAZON_URL}"
+body: str = f"{product_title} is now ¥{price} with the delivery price ¥{delivery}\n{AMAZON_URL}"
 msg.attach(MIMEText(body, "plain", "utf-8"))
 
-ITEM_PRICE = 7000
-DELIVERY_PRICE = 10000
+ITEM_PRICE = environ["ITEM_PRICE"]
+DELIVERY_PRICE = environ["DELIVERY_PRICE"]
 if price < ITEM_PRICE and delivery < DELIVERY_PRICE:
     with smtplib.SMTP(SMTP_EMAIL, port=587) as connection:
         connection.starttls()
