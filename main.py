@@ -48,7 +48,7 @@ msg['From'] = MY_EMAIL
 msg['To'] = TO_EMAIL
 msg['Subject'] = "Amazon Price Alert!"
 
-body: str = f"{product_title}is now ¥{price} with the delivery price ¥{delivery}\n{AMAZON_URL}"
+body: str = f"{product_title} is now ¥{price} with the delivery price ¥{delivery}\n{AMAZON_URL}"
 msg.attach(MIMEText(body, "plain", "utf-8"))
 
 ITEM_PRICE = 7000
