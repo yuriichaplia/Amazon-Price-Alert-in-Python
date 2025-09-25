@@ -23,7 +23,6 @@ response = requests.get(AMAZON_URL, headers=headers)
 content = response.text
 
 soup = BeautifulSoup(content, "html.parser")
-print(soup.prettify())
 
 try:
     price: float = float(
