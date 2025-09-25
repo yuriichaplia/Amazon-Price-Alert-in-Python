@@ -10,6 +10,6 @@ USER_AGENT=user_agent_header (e.g. something like this `Mozilla/5.0 (Windows NT 
 SMTP_EMAIL='smtp.gmail.com'<br>
 ITEM_PRICE=desired_item_price <br>
 DELIVERY_PRICE=price_that_you_are_willing_to_pay_for_delivery <br>
-##### If actual prices of an item and delivery are lower than those provided in .env file then the message will be send
+##### If actual prices of an item and delivery are lower than those provided in .env file then the message will be sent
 
 #### Note, however, that Amazon changes its website structure from time to time and depending on what region you are in prices may display on different positions on websites. In this project Amazon for Japan was used, therefore, if you want to use Amazon for another country or region changes in code may be needed. 
