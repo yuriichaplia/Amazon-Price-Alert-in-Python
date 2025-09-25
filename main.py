@@ -52,7 +52,7 @@ body: str = f"{product_title}is now ¥{price} with the delivery price ¥{deliver
 msg.attach(MIMEText(body, "plain", "utf-8"))
 
 ITEM_PRICE = 7000
-DELIVERY_PRICE = 10000
+DELIVERY_PRICE = 4000
 if price < ITEM_PRICE and delivery < DELIVERY_PRICE:
     with smtplib.SMTP(SMTP_EMAIL, port=587) as connection:
         connection.starttls()
